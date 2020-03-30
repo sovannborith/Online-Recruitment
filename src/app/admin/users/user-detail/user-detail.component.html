@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header">
+      {{pageTitle}}
+    </div>
+  
+    <div class="card-body"
+         *ngIf="user">
+  
+      <div class="row">
+  
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-3">User Name:</div>
+            <div class="col-md-6">{{user.userName}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">First Name:</div>
+            <div class="col-md-6">{{user.firstName}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Last Name:</div>
+            <div class="col-md-6">{{user.lastName}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Email:</div>
+            <div class="col-md-6">{{user.emailId}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Mobile Phone:</div>
+            <div class="col-md-6">{{user.mobilePhone}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Is Active:</div>
+            <div class="col-md-6">
+              {{user.isActive}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">Created Date:</div>
+            <div class="col-md-6">{{user.createdDate | date:'dd-MMM-yyyy'}}</div>
+          </div>
+        </div>  
+      </div>
+  
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <button class="btn btn-outline-secondary mr-3 btn-sm"
+                  style="width:80px"
+                  [routerLink]="['/admin/users']"
+                  queryParamsHandling="preserve">
+            <i class="fa fa-chevron-left"></i> Back
+          </button>
+          <button class="btn btn-outline-primary  btn-sm"
+                  style="width:80px"
+                  [routerLink]="['edit']">
+            Edit
+          </button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">{{errorMessage}}
+  </div>

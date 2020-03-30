@@ -1,0 +1,183 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <form novalidate #userForm="ngForm">
+<fieldset>
+  <legend>Basic User Information</legend>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label"
+           for="userNameId">User Name</label>
+    <div class="col-md-8">
+      <input class="form-control"
+             id="userNameId"
+             type="text"
+             placeholder="User Name (required)"
+             required
+             minlength="6"
+             [(ngModel)]=user.userName
+             name="userName"
+             #userNameVar="ngModel"
+             [ngClass]="{'is-invalid': (userNameVar.touched || 
+             userNameVar.dirty ||
+                                        user.id !== 0) && 
+                                        !userNameVar.valid }" />
+      <span class="invalid-feedback">
+        <span *ngIf="userNameVar.errors?.required">
+          User name is required.
+        </span>
+        <span *ngIf="userNameVar.errors?.minlength">
+          User name must be at least three characters.
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+   <label class="col-md-2 col-form-label"
+          for="userPasswordId">Password</label>
+   <div class="col-md-8">
+     <input class="form-control"
+            id="userPasswordId"
+            type="password"
+            placeholder="Password (required)"
+            required
+            minlength="6"
+            [(ngModel)]=user.userPassword
+            name="userPassword"
+            #userPasswordVar="ngModel"
+            [ngClass]="{'is-invalid': (userPasswordVar.touched || 
+            userPasswordVar.dirty ||
+                                       user.id !== 0) && 
+                                       !userPasswordVar.valid }" />
+     <span class="invalid-feedback">
+       <span *ngIf="userPasswordVar.errors?.required">
+         Password is required.
+       </span>
+       <span *ngIf="userPasswordVar.errors?.minlength">
+         Password must be at least three characters.
+       </span>
+     </span>
+   </div>
+ </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label"
+           for="firstNameId">First Name</label>
+    <div class="col-md-8">
+      <input class="form-control"
+             id="firstNameId"
+             type="text"
+             placeholder="First Name"
+             required
+             [(ngModel)]=user.firstName
+             name="firstName"
+             #firstNameVar="ngModel"
+             [ngClass]="{'is-invalid': (firstNameVar.touched || 
+             firstNameVar.dirty ||
+                                        user.id !== 0) &&
+                                        !firstNameVar.valid }" />
+      
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label"
+           for="lastNameId">Last Name</label>
+    <div class="col-md-8">
+      <textarea class="form-control"
+                id="lastNameId"
+                placeholder="Last Name"
+                [(ngModel)]=user.lastName
+                name="lastName"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group row">
+   <label class="col-md-2 col-form-label"
+          for="userEmailId">Email</label>
+   <div class="col-md-8">
+     <input class="form-control"
+            id="userEmailId"
+            type="text"
+            placeholder="Email (required)"
+            required
+            [(ngModel)]=user.emailId
+            name="emailId"
+            #emailIdVar="ngModel"
+            [ngClass]="{'is-invalid': (emailIdVar.touched || 
+            emailIdVar.dirty ||
+                                       user.id !== 0) && 
+                                       !emailIdVar.valid }" />
+     <span class="invalid-feedback">
+       <span *ngIf="emailIdVar.errors?.required">
+         Email is required.
+       </span>
+     </span>
+   </div>
+ </div>
+
+ <div class="form-group row">
+   <label class="col-md-2 col-form-label"
+          for="mobilePhoneId">Mobile Phone</label>
+   <div class="col-md-8">
+     <input class="form-control"
+            id="mobilePhoneId"
+            type="text"
+            placeholder="Mobile Phone"
+            [(ngModel)]=user.mobilePhone
+            name="mobilePhone" />
+     
+   </div>
+ </div>
+
+ <div class="form-group row">
+   <label class="col-md-2 col-form-label"
+          for="isActiveId">Is Active</label>
+   <div class="col-md-8">
+     <input class="form-control"
+            id="isActiveId"
+            type="checkbox"
+            [(ngModel)]=user.isActive
+            name="isActive" />
+     
+   </div>
+ </div>
+</fieldset>
+</form>
+
+ <div class="row mb-2">
+   <div class="col-md-4">
+     <button class="btn btn-primary mr-3  btn-sm"
+             style="width:80px"
+             type="button"
+             [title]="isValid() ? 'Save your entered data' : 'Disabled until the form data is valid'"
+             [disabled]="!isValid()"
+             (click)="saveUser()">
+       Save
+     </button>
+     <button class="btn btn-outline-secondary mr-3  btn-sm"
+             style="width:80px"
+             type="button"
+             title="Cancel your edits"
+             [routerLink]="['/admin/users']">
+       Cancel
+     </button>
+     <button class="btn btn-outline-warning btn-sm"
+             style="width:80px"
+             type="button"
+             title="Delete this user"
+             (click)="deleteUser()" *ngIf="allowDelete">
+       Delete
+     </button>
+   </div>
+ </div>
+</div>
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="errorMessage">{{errorMessage}}
+</div>

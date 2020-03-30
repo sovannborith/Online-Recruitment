@@ -1,0 +1,85 @@
+.login-box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 320px;
+    height: 400px;
+    color: #fff;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 60px 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.7);    
+    background: blue;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+.header{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.login-box .inputBox{
+    position: relative;
+}
+.login-box .inputBox div{
+    position: relative;
+    padding: 0;
+}
+.login-box .inputBox div input{
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;  
+    font-size: 16px;
+    letter-spacing: 1px;  
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;;
+    outline: none;
+
+    background: transparent;
+}
+.login-box .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;    
+    pointer-events: none;
+    transition: .5s;
+}
+.login-box .inputBox input:focus ~ label, .login-box .inputBox input:valid ~ label{
+    top: -20px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 12px;
+}
+/*
+.login-box .inputBox input[type='submit']{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+*/
+.login-box .inputBox .aLink{
+    text-decoration: none;
+    color: #03a9f4;
+    cursor: pointer;
+}
+.login-box .inputBox .aLink:hover{
+    color: blue;
+}
